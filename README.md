@@ -16,10 +16,11 @@ npm i https://github.com/callisto2410/modstrap-spinner.git
 
 ## Usage
 
+SCSS
 ```scss
 @use '~@modstrap/spinner';
 ```
-
+TypeScript
 ```ts
 import Spinner from "@modstrap/spinner";
 

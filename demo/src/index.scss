@@ -1,0 +1,112 @@
+@use '../../src/Spinner';
+
+body {
+  margin: 0;
+  background: #ffffff;
+}
+
+body * {
+  box-sizing: border-box;
+}
+
+article {
+  color: #444444;
+  width: 100vw;
+  min-width: 320px;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.content {
+  width: 960px;
+  margin: auto;
+  padding: 30px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+
+  @media (max-width: 960px) {
+    padding: 10px 10px 5px;
+  }
+}
+
+%grid {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.test {
+  margin: 0 0 20px;
+
+  &:nth-last-child(1) {
+    margin: 0;
+  }
+}
+
+/* Test: 1. */
+.test-1 {
+  @extend %grid;
+
+  .spinner {
+    width: calc(100% - (10 * (36px + 10px)));
+  }
+
+  .button {
+    font: 14px 'Arial';
+    color: #ffffff;
+    width: 36px;
+    height: 36px;
+    background: #00b0ff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    user-select: none;
+    transition: .3s background;
+
+    &:hover {
+      background: #0081cb;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .spinner {
+      width: 100%;
+      margin: 10px 0;
+    }
+
+    .button {
+      width: 19%;
+    }
+  }
+}
+
+/* Reset. */
+.reset {
+  font: 14px 'Arial';
+  color: #ffffff;
+  width: 300px;
+  height: 36px;
+  margin: 0 auto;
+  display: flex;
+  background: #00b0ff;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  user-select: none;
+  transition: .3s background;
+
+  &:hover {
+    background: #0081cb;
+  }
+
+  @media (max-width: 960px) {
+    margin: 0 auto 5px;
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+}

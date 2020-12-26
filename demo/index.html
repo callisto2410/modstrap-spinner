@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Spinner</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<article>
+    <div class="content">
+        <div class="test test-1">
+            <div class="button subtraction" data-value="50">-50</div>
+            <div class="button subtraction" data-value="50">-40</div>
+            <div class="button subtraction" data-value="30">-30</div>
+            <div class="button subtraction" data-value="20">-20</div>
+            <div class="button subtraction" data-value="10">-10</div>
+            <div class="item spinner"
+                 data-spinner-min="-500"
+                 data-spinner-max="500"
+                 data-spinner-value="0&#179;">
+                <div class="spinner-subtraction"></div>
+                <div class="spinner-value">0&#179;</div>
+                <div class="spinner-addition"></div>
+            </div>
+            <div class="button addition" data-value="10">+10</div>
+            <div class="button addition" data-value="20">+20</div>
+            <div class="button addition" data-value="30">+30</div>
+            <div class="button addition" data-value="40">+40</div>
+            <div class="button addition" data-value="50">+50</div>
+        </div>
+
+        <div class="test test-2">
+            <div class="item spinner"
+                 data-spinner-max="1000"
+                 data-spinner-value="*** 456 ***">
+                <div class="spinner-subtraction"></div>
+                <div class="spinner-value">*** 456 ***</div>
+                <div class="spinner-addition"></div>
+            </div>
+        </div>
+
+        <div class="test test-3">
+            <div class="item spinner"
+                 data-spinner-max="1000"
+                 data-spinner-value="(123) (456) (789)"
+                 data-spinner-pattern="\(([-\d.]+)\)">
+                <div class="spinner-subtraction"></div>
+                <div class="spinner-value">(123) (456) (789)</div>
+                <div class="spinner-addition"></div>
+            </div>
+        </div>
+
+        <div class="test test-4">
+            <div class="item spinner"
+                 data-spinner-max="1000"
+                 data-spinner-value="(123) (456) (789)"
+                 data-spinner-pattern="^\(([-\d.]+)\)">
+                <div class="spinner-subtraction"></div>
+                <div class="spinner-value">(123) (456) (789)</div>
+                <div class="spinner-addition"></div>
+            </div>
+        </div>
+
+        <div class="test test-5">
+            <div class="item spinner"
+                 data-spinner-max="1000"
+                 data-spinner-value="(123) (456) (789)"
+                 data-spinner-pattern=".+\s\(([-\d.]+)\)\s.+">
+                <div class="spinner-subtraction"></div>
+                <div class="spinner-value">(123) (456) (789)</div>
+                <div class="spinner-addition"></div>
+            </div>
+        </div>
+
+        <div class="test test-5">
+            <div class="item spinner"
+                 data-spinner-max="1000"
+                 data-spinner-value="(123) (456) (789)"
+                 data-spinner-pattern="\(([-\d.]+)\)$">
+                <div class="spinner-subtraction"></div>
+                <div class="spinner-value">(123) (456) (789)</div>
+                <div class="spinner-addition"></div>
+            </div>
+        </div>
+
+        <div class="reset">Reset</div>
+    </div>
+</article>
+<script async src="dist/bundle.js"></script>
+</body>
+</html>

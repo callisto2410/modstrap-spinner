@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "module": "CommonJS",
+    "moduleResolution": "Node",
+    "esModuleInterop": true,
+    "incremental": true,
+    "tsBuildInfoFile": "./.cache/tsconfig.tsbuildinfo",
+    "sourceMap": false,
+    "target": "ES6",
+    "strict": true,
+    "noEmitOnError": true,
+    "removeComments": false,
+    "declaration": true,
+    "outDir": "./dist",
+  },
+  "include": [
+    "./src/**/*",
+  ],
+}

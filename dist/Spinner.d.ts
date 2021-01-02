@@ -1,7 +1,7 @@
-interface SpinnerElement extends HTMLElement {
-    spinner: Defaults;
+interface SpinnerElement extends HTMLDivElement {
+    spinner: SpinnerDefaults;
 }
-interface Defaults {
+interface SpinnerDefaults {
     min: number;
     max: number;
     step: number;

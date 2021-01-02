@@ -1,8 +1,8 @@
-interface SpinnerElement extends HTMLElement {
-    spinner: Defaults;
+interface SpinnerElement extends HTMLDivElement {
+    spinner: SpinnerDefaults;
 }
 
-interface Defaults {
+interface SpinnerDefaults {
     min: number;
     max: number;
     step: number;
@@ -12,7 +12,7 @@ interface Defaults {
     pattern: string;
 }
 
-type Properties = Partial<Defaults>;
+type SpinnerProperties = Partial<SpinnerDefaults>;
 
 type SpinnerAction = 'addition' | 'subtraction';
 
@@ -74,7 +74,7 @@ class Spinner {
      *
      * @private
      */
-    private static defaults: Defaults = {
+    private static defaults: SpinnerDefaults = {
         min: 1,
         max: 1_000_000,
         step: 1,
@@ -100,7 +100,7 @@ class Spinner {
      * @param event
      * @private
      */
-    private static handler(event: Event) {
+    private static handler(event: Event): void {
         const target = event.target as Element;
         if (!this.isSpinner(target)) return;
 
@@ -182,7 +182,7 @@ class Spinner {
      * @param element
      * @private
      */
-    private static setProperties(element: SpinnerElement) {
+    private static setProperties(element: SpinnerElement): void {
         const properties = this.getProperties(element);
 
         element.spinner = {...this.defaults, ...properties};
@@ -198,7 +198,7 @@ class Spinner {
      * @param element
      * @private
      */
-    private static getProperties(element: SpinnerElement): Properties {
+    private static getProperties(element: SpinnerElement): SpinnerProperties {
         const dataset = element.dataset ?? {};
 
         return {

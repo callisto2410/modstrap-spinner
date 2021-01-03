@@ -85,8 +85,8 @@ class Spinner {
     }
 
     /**
-     * Setting up.
-     * Runs by default when importing a module.
+     *  Setting up.
+     *  Called by default when importing a module, no manual call required.
      */
     static init() {
         if (!this.listenerExists) {

@@ -23,6 +23,4 @@ SCSS
 TypeScript
 ```ts
 import Spinner from "@modstrap/spinner";
-
-Spinner.init();
 ```

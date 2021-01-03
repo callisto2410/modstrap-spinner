@@ -215,4 +215,5 @@ Spinner.defaults = {
     default: '1',
     pattern: '([-\\d.]+)',
 };
+Spinner.init();
 exports.default = Spinner;

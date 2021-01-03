@@ -263,6 +263,8 @@ class Spinner {
     }
 }
 
+Spinner.init();
+
 export default Spinner;
 export {
     SpinnerAction,

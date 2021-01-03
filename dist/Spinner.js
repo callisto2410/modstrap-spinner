@@ -192,7 +192,7 @@ Spinner.change = new Event('change');
  *
  * @private
  */
-Spinner.click = new Event('change', {
+Spinner.click = new Event('click', {
     bubbles: true,
 });
 /**

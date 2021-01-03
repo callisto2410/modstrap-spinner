@@ -58,7 +58,7 @@ class Spinner {
      *
      * @private
      */
-    private static click: Event = new Event('change', {
+    private static click: Event = new Event('click', {
         bubbles: true,
     });
 

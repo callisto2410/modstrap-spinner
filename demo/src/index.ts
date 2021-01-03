@@ -11,9 +11,7 @@ document.body.addEventListener('click', (event: Event) => {
 
     const spinner = document.querySelector('.test-1 .spinner') as SpinnerElement;
     const step = Number(element.getAttribute('data-value'));
-    let action: SpinnerAction = 'subtraction';
-
-    if (element.classList.contains('addition')) action = 'addition' as SpinnerAction;
+    const action: SpinnerAction = (element.classList.contains('addition')) ? 'addition': 'subtraction';
 
     Spinner.accelerate(spinner, action, step);
 });

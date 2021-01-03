@@ -5,7 +5,7 @@
     "esModuleInterop": true,
     "incremental": true,
     "sourceMap": true,
-    "target": "ES6",
+    "target": "ES2018",
     "strict": true,
     "noEmitOnError": true,
   }

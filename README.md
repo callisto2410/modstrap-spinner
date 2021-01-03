@@ -16,6 +16,18 @@ npm i https://github.com/callisto2410/modstrap-spinner.git
 
 ## Usage
 
+HTML
+```html
+<div class="spinner" 
+     data-spinner-min="-500" 
+     data-spinner-max="500" 
+     data-spinner-value="0&#179;">
+    <div class="spinner-subtraction"></div>
+    <div class="spinner-value">0&#179;</div>
+    <div class="spinner-addition"></div>
+</div>
+```
+
 SCSS
 ```scss
 @use '~@modstrap/spinner';

@@ -10,7 +10,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
  */
 class Spinner {
     /**
-     * Initialization.
+     * Setting up.
+     * Runs by default when importing a module.
      */
     static init() {
         if (!this.listenerExists) {
@@ -50,16 +51,6 @@ class Spinner {
         (changed) && element.dispatchEvent(this.change);
     }
     /**
-     * Checks the existence of spinner properties.
-     *
-     * @param element
-     * @private
-     */
-    static checkProperties(element) {
-        if (!element.spinner)
-            this.setProperties(element);
-    }
-    /**
      * Returns true if the specified element is a spinner, otherwise returns false.
      *
      * @param element
@@ -85,6 +76,16 @@ class Spinner {
      */
     static isSubtraction(element) {
         return element.classList.contains(this.subtraction);
+    }
+    /**
+     * Checks the existence of spinner properties.
+     *
+     * @param element
+     * @private
+     */
+    static checkProperties(element) {
+        if (!element.spinner)
+            this.setProperties(element);
     }
     /**
      * Sets properties for the specified element.

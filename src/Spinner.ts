@@ -85,7 +85,8 @@ class Spinner {
     }
 
     /**
-     * Initialization.
+     * Setting up.
+     * Runs by default when importing a module.
      */
     static init() {
         if (!this.listenerExists) {
@@ -137,16 +138,6 @@ class Spinner {
     }
 
     /**
-     * Checks the existence of spinner properties.
-     *
-     * @param element
-     * @private
-     */
-    private static checkProperties(element: SpinnerElement): void {
-        if (!element.spinner) this.setProperties(element);
-    }
-
-    /**
      * Returns true if the specified element is a spinner, otherwise returns false.
      *
      * @param element
@@ -174,6 +165,16 @@ class Spinner {
      */
     private static isSubtraction(element: Element): boolean {
         return element.classList.contains(this.subtraction);
+    }
+
+    /**
+     * Checks the existence of spinner properties.
+     *
+     * @param element
+     * @private
+     */
+    private static checkProperties(element: SpinnerElement): void {
+        if (!element.spinner) this.setProperties(element);
     }
 
     /**

@@ -63,7 +63,8 @@ declare class Spinner {
      */
     private static defaults;
     /**
-     * Initialization.
+     * Setting up.
+     * Runs by default when importing a module.
      */
     static init(): void;
     /**
@@ -73,13 +74,6 @@ declare class Spinner {
      * @private
      */
     private static handler;
-    /**
-     * Checks the existence of spinner properties.
-     *
-     * @param element
-     * @private
-     */
-    private static checkProperties;
     /**
      * Returns true if the specified element is a spinner, otherwise returns false.
      *
@@ -101,6 +95,13 @@ declare class Spinner {
      * @private
      */
     private static isSubtraction;
+    /**
+     * Checks the existence of spinner properties.
+     *
+     * @param element
+     * @private
+     */
+    private static checkProperties;
     /**
      * Sets properties for the specified element.
      *

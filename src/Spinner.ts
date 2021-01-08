@@ -74,7 +74,7 @@ export class Spinner {
      *
      * @private
      */
-    private static defaults: SpinnerDefaults = {
+    private static _defaults: SpinnerDefaults = {
         min: 1,
         max: 1_000_000,
         step: 1,
@@ -82,6 +82,18 @@ export class Spinner {
         value: "1",
         default: "1",
         pattern: "([-\\d.]+)",
+    }
+
+    /**
+     * Default settings.
+     *
+     * @param properties
+     */
+    public static set defaults(properties: SpinnerProperties) {
+        this._defaults = {
+            ...this._defaults,
+            ...properties,
+        }
     }
 
     /**
@@ -186,8 +198,8 @@ export class Spinner {
     private static setProperties(element: SpinnerElement): void {
         const properties = this.getProperties(element);
 
-        element.spinner = {...this.defaults, ...properties};
-        element.spinner.default = properties.value ?? this.defaults.value;
+        element.spinner = {...this._defaults, ...properties};
+        element.spinner.default = properties.value ?? this._defaults.value;
 
         const value = element.querySelector("." + this.value) as Element;
         value.innerHTML = element.spinner.value;
@@ -203,12 +215,12 @@ export class Spinner {
         const dataset = element.dataset ?? {};
 
         return {
-            min: Number(dataset.spinnerMin ?? this.defaults.min),
-            max: Number(dataset.spinnerMax ?? this.defaults.max),
-            step: Number(dataset.spinnerStep ?? this.defaults.step),
-            fraction: Number(dataset.spinnerFraction ?? this.defaults.fraction),
-            value: dataset.spinnerValue ?? this.defaults.value,
-            pattern: dataset.spinnerPattern ?? this.defaults.pattern,
+            min: Number(dataset.spinnerMin ?? this._defaults.min),
+            max: Number(dataset.spinnerMax ?? this._defaults.max),
+            step: Number(dataset.spinnerStep ?? this._defaults.step),
+            fraction: Number(dataset.spinnerFraction ?? this._defaults.fraction),
+            value: dataset.spinnerValue ?? this._defaults.value,
+            pattern: dataset.spinnerPattern ?? this._defaults.pattern,
         }
     }
 

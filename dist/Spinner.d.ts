@@ -62,7 +62,13 @@ export declare class Spinner {
      *
      * @private
      */
-    private static defaults;
+    private static _defaults;
+    /**
+     * Default settings.
+     *
+     * @param properties
+     */
+    static set defaults(properties: SpinnerProperties);
     /**
      *  Setting up.
      *  Called by default when importing a module, no manual call required.

@@ -2,6 +2,10 @@ import "./index.scss";
 
 import Spinner, {SpinnerAction, SpinnerElement} from "../../src/Spinner";
 
+Spinner.defaults = {
+    step: 2,
+}
+
 /* Test: 1. */
 document.body.addEventListener("click", (event: Event) => {
     const element = event.target as Element;

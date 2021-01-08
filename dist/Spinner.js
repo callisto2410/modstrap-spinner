@@ -11,6 +11,17 @@ exports.Spinner = void 0;
  */
 class Spinner {
     /**
+     * Default settings.
+     *
+     * @param properties
+     */
+    static set defaults(properties) {
+        this._defaults = {
+            ...this._defaults,
+            ...properties,
+        };
+    }
+    /**
      *  Setting up.
      *  Called by default when importing a module, no manual call required.
      */
@@ -97,8 +108,8 @@ class Spinner {
     static setProperties(element) {
         var _a;
         const properties = this.getProperties(element);
-        element.spinner = { ...this.defaults, ...properties };
-        element.spinner.default = (_a = properties.value) !== null && _a !== void 0 ? _a : this.defaults.value;
+        element.spinner = { ...this._defaults, ...properties };
+        element.spinner.default = (_a = properties.value) !== null && _a !== void 0 ? _a : this._defaults.value;
         const value = element.querySelector("." + this.value);
         value.innerHTML = element.spinner.value;
     }
@@ -112,12 +123,12 @@ class Spinner {
         var _a, _b, _c, _d, _e, _f, _g;
         const dataset = (_a = element.dataset) !== null && _a !== void 0 ? _a : {};
         return {
-            min: Number((_b = dataset.spinnerMin) !== null && _b !== void 0 ? _b : this.defaults.min),
-            max: Number((_c = dataset.spinnerMax) !== null && _c !== void 0 ? _c : this.defaults.max),
-            step: Number((_d = dataset.spinnerStep) !== null && _d !== void 0 ? _d : this.defaults.step),
-            fraction: Number((_e = dataset.spinnerFraction) !== null && _e !== void 0 ? _e : this.defaults.fraction),
-            value: (_f = dataset.spinnerValue) !== null && _f !== void 0 ? _f : this.defaults.value,
-            pattern: (_g = dataset.spinnerPattern) !== null && _g !== void 0 ? _g : this.defaults.pattern,
+            min: Number((_b = dataset.spinnerMin) !== null && _b !== void 0 ? _b : this._defaults.min),
+            max: Number((_c = dataset.spinnerMax) !== null && _c !== void 0 ? _c : this._defaults.max),
+            step: Number((_d = dataset.spinnerStep) !== null && _d !== void 0 ? _d : this._defaults.step),
+            fraction: Number((_e = dataset.spinnerFraction) !== null && _e !== void 0 ? _e : this._defaults.fraction),
+            value: (_f = dataset.spinnerValue) !== null && _f !== void 0 ? _f : this._defaults.value,
+            pattern: (_g = dataset.spinnerPattern) !== null && _g !== void 0 ? _g : this._defaults.pattern,
         };
     }
     /**
@@ -209,7 +220,7 @@ Spinner.listenerExists = false;
  *
  * @private
  */
-Spinner.defaults = {
+Spinner._defaults = {
     min: 1,
     max: 1000000,
     step: 1,

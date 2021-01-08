@@ -4,7 +4,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font: 14px 'Arial';
+  font: 14px "Arial";
   color: #333333;
   border: 1px solid #00b0ff;
 
@@ -41,7 +41,7 @@
   }
 
   &::before {
-    font: 18px 'Arial';
+    font: 18px "Arial";
     color: #ffffff;
     transition: .3s color;
   }
@@ -51,7 +51,7 @@
   left: 0;
 
   &::before {
-    content: '-';
+    content: "-";
   }
 }
 
@@ -59,6 +59,6 @@
   right: 0;
 
   &::before {
-    content: '+';
+    content: "+";
   }
 }

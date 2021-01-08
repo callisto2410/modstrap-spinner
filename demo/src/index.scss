@@ -1,4 +1,4 @@
-@use '../../src/Spinner';
+@use "../../src/Spinner";
 
 body {
   margin: 0;
@@ -54,7 +54,7 @@ article {
   }
 
   .button {
-    font: 14px 'Arial';
+    font: 14px "Arial";
     color: #ffffff;
     width: 36px;
     height: 36px;
@@ -85,7 +85,7 @@ article {
 
 /* Reset. */
 .reset {
-  font: 14px 'Arial';
+  font: 14px "Arial";
   color: #ffffff;
   width: 300px;
   height: 36px;

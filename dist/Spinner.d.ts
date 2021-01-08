@@ -1,7 +1,7 @@
-interface SpinnerElement extends HTMLDivElement {
+export interface SpinnerElement extends HTMLDivElement {
     spinner: SpinnerDefaults;
 }
-interface SpinnerDefaults {
+export interface SpinnerDefaults {
     min: number;
     max: number;
     step: number;
@@ -10,7 +10,8 @@ interface SpinnerDefaults {
     default: string;
     pattern: string;
 }
-declare type SpinnerAction = 'addition' | 'subtraction';
+export declare type SpinnerProperties = Partial<SpinnerDefaults>;
+export declare type SpinnerAction = "addition" | "subtraction";
 /**
  * Spinner widget with support for custom value patterns.
  *
@@ -19,7 +20,7 @@ declare type SpinnerAction = 'addition' | 'subtraction';
  * @see reset
  * @see valueOf
  */
-declare class Spinner {
+export declare class Spinner {
     /**
      * CSS selector for value container.
      *
@@ -138,4 +139,3 @@ declare class Spinner {
     static valueOf(element: SpinnerElement): string;
 }
 export default Spinner;
-export { SpinnerAction, SpinnerElement, };

@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.Spinner = void 0;
 /**
  * Spinner widget with support for custom value patterns.
  *
@@ -15,7 +16,7 @@ class Spinner {
      */
     static init() {
         if (!this.listenerExists) {
-            document.body.addEventListener('click', this.handler.bind(this));
+            document.body.addEventListener("click", this.handler.bind(this));
             this.listenerExists = true;
         }
     }
@@ -29,10 +30,10 @@ class Spinner {
         const target = event.target;
         if (!this.isSpinner(target))
             return;
-        const element = target.closest('.spinner');
+        const element = target.closest(".spinner");
         this.checkProperties(element);
-        const value = element.querySelector('.' + this.value);
-        const regexp = new RegExp(element.spinner.pattern, 'g');
+        const value = element.querySelector("." + this.value);
+        const regexp = new RegExp(element.spinner.pattern, "g");
         let changed = false;
         value.innerHTML = value.innerHTML.replace(regexp, (source, match) => {
             const { min, max, step, fraction, } = element.spinner;
@@ -96,9 +97,9 @@ class Spinner {
     static setProperties(element) {
         var _a;
         const properties = this.getProperties(element);
-        element.spinner = Object.assign(Object.assign({}, this.defaults), properties);
+        element.spinner = { ...this.defaults, ...properties };
         element.spinner.default = (_a = properties.value) !== null && _a !== void 0 ? _a : this.defaults.value;
-        const value = element.querySelector('.' + this.value);
+        const value = element.querySelector("." + this.value);
         value.innerHTML = element.spinner.value;
     }
     /**
@@ -130,10 +131,10 @@ class Spinner {
         this.checkProperties(element);
         const origin = element.spinner.step;
         let button;
-        if (action === 'subtraction')
-            button = element.querySelector('.' + this.subtraction);
-        if (action === 'addition')
-            button = element.querySelector('.' + this.addition);
+        if (action === "subtraction")
+            button = element.querySelector("." + this.subtraction);
+        if (action === "addition")
+            button = element.querySelector("." + this.addition);
         if (button) {
             element.spinner.step = step;
             button.dispatchEvent(this.click);
@@ -147,7 +148,7 @@ class Spinner {
      */
     static reset(element) {
         this.checkProperties(element);
-        const value = element.querySelector('.' + this.value);
+        const value = element.querySelector("." + this.value);
         if (value.innerHTML === element.spinner.default)
             return;
         value.innerHTML = element.spinner.default;
@@ -164,36 +165,37 @@ class Spinner {
         return element.spinner.value;
     }
 }
+exports.Spinner = Spinner;
 /**
  * CSS selector for value container.
  *
  * @private
  */
-Spinner.value = 'spinner-value';
+Spinner.value = "spinner-value";
 /**
  * CSS selector for subtract button.
  *
  * @private
  */
-Spinner.subtraction = 'spinner-subtraction';
+Spinner.subtraction = "spinner-subtraction";
 /**
  * CSS selector for addition button.
  *
  * @private
  */
-Spinner.addition = 'spinner-addition';
+Spinner.addition = "spinner-addition";
 /**
  * Value change event.
  *
  * @private
  */
-Spinner.change = new Event('change');
+Spinner.change = new Event("change");
 /**
  * Click event for addition/subtraction buttons.
  *
  * @private
  */
-Spinner.click = new Event('click', {
+Spinner.click = new Event("click", {
     bubbles: true,
 });
 /**
@@ -212,9 +214,9 @@ Spinner.defaults = {
     max: 1000000,
     step: 1,
     fraction: 2,
-    value: '1',
-    default: '1',
-    pattern: '([-\\d.]+)',
+    value: "1",
+    default: "1",
+    pattern: "([-\\d.]+)",
 };
 Spinner.init();
 exports.default = Spinner;

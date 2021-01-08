@@ -1,8 +1,8 @@
-interface SpinnerElement extends HTMLDivElement {
+export interface SpinnerElement extends HTMLDivElement {
     spinner: SpinnerDefaults;
 }
 
-interface SpinnerDefaults {
+export interface SpinnerDefaults {
     min: number;
     max: number;
     step: number;
@@ -12,9 +12,9 @@ interface SpinnerDefaults {
     pattern: string;
 }
 
-type SpinnerProperties = Partial<SpinnerDefaults>;
+export type SpinnerProperties = Partial<SpinnerDefaults>;
 
-type SpinnerAction = 'addition' | 'subtraction';
+export type SpinnerAction = "addition" | "subtraction";
 
 /**
  * Spinner widget with support for custom value patterns.
@@ -24,41 +24,41 @@ type SpinnerAction = 'addition' | 'subtraction';
  * @see reset
  * @see valueOf
  */
-class Spinner {
+export class Spinner {
     /**
      * CSS selector for value container.
      *
      * @private
      */
-    private static value: string = 'spinner-value';
+    private static value: string = "spinner-value";
 
     /**
      * CSS selector for subtract button.
      *
      * @private
      */
-    private static subtraction: string = 'spinner-subtraction';
+    private static subtraction: string = "spinner-subtraction";
 
     /**
      * CSS selector for addition button.
      *
      * @private
      */
-    private static addition: string = 'spinner-addition';
+    private static addition: string = "spinner-addition";
 
     /**
      * Value change event.
      *
      * @private
      */
-    private static change: Event = new Event('change');
+    private static change: Event = new Event("change");
 
     /**
      * Click event for addition/subtraction buttons.
      *
      * @private
      */
-    private static click: Event = new Event('click', {
+    private static click: Event = new Event("click", {
         bubbles: true,
     });
 
@@ -79,18 +79,18 @@ class Spinner {
         max: 1_000_000,
         step: 1,
         fraction: 2,
-        value: '1',
-        default: '1',
-        pattern: '([-\\d.]+)',
+        value: "1",
+        default: "1",
+        pattern: "([-\\d.]+)",
     }
 
     /**
      *  Setting up.
      *  Called by default when importing a module, no manual call required.
      */
-    static init() {
+    public static init() {
         if (!this.listenerExists) {
-            document.body.addEventListener('click', this.handler.bind(this));
+            document.body.addEventListener("click", this.handler.bind(this));
             this.listenerExists = true;
         }
     }
@@ -105,11 +105,11 @@ class Spinner {
         const target = event.target as Element;
         if (!this.isSpinner(target)) return;
 
-        const element = target.closest('.spinner') as SpinnerElement;
+        const element = target.closest(".spinner") as SpinnerElement;
         this.checkProperties(element);
 
-        const value = element.querySelector('.' + this.value) as Element;
-        const regexp = new RegExp(element.spinner.pattern, 'g');
+        const value = element.querySelector("." + this.value) as Element;
+        const regexp = new RegExp(element.spinner.pattern, "g");
         let changed = false;
 
         value.innerHTML = value.innerHTML.replace(regexp, (source: string, match: string) => {
@@ -189,7 +189,7 @@ class Spinner {
         element.spinner = {...this.defaults, ...properties};
         element.spinner.default = properties.value ?? this.defaults.value;
 
-        const value = element.querySelector('.' + this.value) as Element;
+        const value = element.querySelector("." + this.value) as Element;
         value.innerHTML = element.spinner.value;
     }
 
@@ -219,14 +219,14 @@ class Spinner {
      * @param action
      * @param step
      */
-    static accelerate(element: SpinnerElement, action: SpinnerAction, step: number): void {
+    public static accelerate(element: SpinnerElement, action: SpinnerAction, step: number): void {
         this.checkProperties(element);
 
         const origin = element.spinner.step;
         let button;
 
-        if (action === 'subtraction') button = element.querySelector('.' + this.subtraction);
-        if (action === 'addition') button = element.querySelector('.' + this.addition);
+        if (action === "subtraction") button = element.querySelector("." + this.subtraction);
+        if (action === "addition") button = element.querySelector("." + this.addition);
 
         if (button) {
             element.spinner.step = step;
@@ -240,10 +240,10 @@ class Spinner {
      *
      * @param element
      */
-    static reset(element: SpinnerElement): void {
+    public static reset(element: SpinnerElement): void {
         this.checkProperties(element);
 
-        const value = element.querySelector('.' + this.value)!;
+        const value = element.querySelector("." + this.value)!;
         if (value.innerHTML === element.spinner.default) return;
 
         value.innerHTML = element.spinner.default;
@@ -257,7 +257,7 @@ class Spinner {
      *
      * @param element
      */
-    static valueOf(element: SpinnerElement): string {
+    public static valueOf(element: SpinnerElement): string {
         this.checkProperties(element);
 
         return element.spinner.value;
@@ -267,7 +267,3 @@ class Spinner {
 Spinner.init();
 
 export default Spinner;
-export {
-    SpinnerAction,
-    SpinnerElement,
-}

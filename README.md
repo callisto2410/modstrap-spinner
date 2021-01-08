@@ -30,7 +30,7 @@ HTML
 
 SCSS
 ```scss
-@use '~@modstrap/spinner';
+@use "~@modstrap/spinner";
 ```
 TypeScript
 ```ts

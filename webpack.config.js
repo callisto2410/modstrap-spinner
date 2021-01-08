@@ -1,5 +1,5 @@
-const Path = require('path');
-const TerserPlugin = require('terser-webpack-plugin');
+const Path = require("path");
+const TerserPlugin = require("terser-webpack-plugin");
 
 module.exports = {
     performance: {
@@ -18,51 +18,51 @@ module.exports = {
             }),
         ],
     },
-    entry: Path.resolve(__dirname, 'demo', 'src', 'index.ts'),
+    entry: Path.resolve(__dirname, "demo", "src", "index.ts"),
     output: {
-        filename: 'bundle.js',
-        path: Path.resolve(__dirname, 'demo', 'dist'),
+        filename: "bundle.js",
+        path: Path.resolve(__dirname, "demo", "dist"),
     },
-    devtool: 'source-map',
-    mode: 'production',
+    devtool: "source-map",
+    mode: "production",
     module: {
         rules: [
             {
                 test: /\.s[ac]ss$/i,
                 use: [
-                    'style-loader',
+                    "style-loader",
                     {
-                        loader: 'css-loader',
+                        loader: "css-loader",
                         options: {
                             sourceMap: false,
                             url: false,
                         }
                     },
                     {
-                        loader: 'postcss-loader',
+                        loader: "postcss-loader",
                         options: {
                             postcssOptions: {
                                 plugins: [
-                                    ['autoprefixer'],
+                                    ["autoprefixer"],
                                 ],
                             },
                         },
                     },
-                    'sass-loader',
+                    "sass-loader",
                 ],
             },
             {
                 test: /\.tsx?$/,
                 use: [{
-                    loader: 'ts-loader',
+                    loader: "ts-loader",
                     options: {
-                        configFile: 'tsconfig.loader.json'
+                        configFile: "tsconfig.loader.json"
                     }
                 }],
             },
         ],
     },
     resolve: {
-        extensions: ['.tsx', '.ts', '.js'],
+        extensions: [".tsx", ".ts", ".js"],
     },
 };

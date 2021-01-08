@@ -19,7 +19,7 @@ export type SpinnerAction = "addition" | "subtraction";
 /**
  * Spinner widget with support for custom value patterns.
  *
- * @see init
+ * @see bind
  * @see accelerate
  * @see reset
  * @see valueOf
@@ -88,7 +88,7 @@ export class Spinner {
      *  Setting up.
      *  Called by default when importing a module, no manual call required.
      */
-    public static init() {
+    public static bind() {
         if (!this.listenerExists) {
             document.body.addEventListener("click", this.handler.bind(this));
             this.listenerExists = true;
@@ -264,6 +264,6 @@ export class Spinner {
     }
 }
 
-Spinner.init();
+Spinner.bind();
 
 export default Spinner;

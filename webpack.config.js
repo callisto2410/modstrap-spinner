@@ -90,10 +90,10 @@ WP.module = {
             }],
         },
     ],
-}
+};
 
 WP.resolve = {
     extensions: [".ts", ".js"],
-}
+};
 
 module.exports = WP;

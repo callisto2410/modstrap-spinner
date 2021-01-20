@@ -16,11 +16,11 @@
     "url": "git+https://github.com/callisto2410/modstrap-spinner.git"
   },
   "scripts": {
-    "build": "tsc --project tsconfig.json && npx sass --no-source-map src/Spinner.scss dist/Spinner.css",
+    "build": "tsc --project tsconfig.json && sass --no-source-map src/Spinner.scss dist/Spinner.css",
     "build:all": "npm run build:clean && npm run build && npm run build:demo",
     "build:demo": "webpack --config webpack.config.js",
     "build:demo:watch": "webpack --watch --config webpack.config.js",
-    "build:clean": "npx rimraf .cache dist demo/dist *.tgz",
+    "build:clean": "rimraf .cache dist demo/dist *.tgz",
     "build:pack": "npm run build:clean && npm run build && npm pack"
   },
   "devDependencies": {

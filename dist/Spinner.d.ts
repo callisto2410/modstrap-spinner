@@ -2,12 +2,33 @@ export interface SpinnerElement extends HTMLDivElement {
     spinner: SpinnerDefaults;
 }
 export interface SpinnerDefaults {
+    /**
+     * Minimum possible value (inclusive).
+     */
     min: number;
+    /**
+     * Maximum possible value (inclusive).
+     */
     max: number;
+    /**
+     * Step of increasing/decreasing the value.
+     */
     step: number;
+    /**
+     * The number of digits after the dot.
+     */
     fraction: number;
+    /**
+     * The initial value.
+     */
     value: string;
+    /**
+     * The default value.
+     */
     default: string;
+    /**
+     * RegExp to determine the value to be increased/decreased.
+     */
     pattern: string;
 }
 export declare type SpinnerProperties = Partial<SpinnerDefaults>;

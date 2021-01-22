@@ -44,10 +44,10 @@ class Spinner {
             return;
         const element = target.closest(".spinner");
         this.checkProperties(element);
-        const value = element.querySelector("." + this.value);
+        const spinnerValue = element.querySelector("." + this.value);
         const regexp = new RegExp(element.spinner.pattern, "g");
         let changed = false;
-        value.innerHTML = value.innerHTML.replace(regexp, (source, match) => {
+        spinnerValue.innerHTML = spinnerValue.innerHTML.replace(regexp, (source, match) => {
             const { min, max, step, fraction, } = element.spinner;
             let expected = Number(match);
             if (this.isAddition(target))
@@ -60,7 +60,7 @@ class Spinner {
             }
             return source;
         });
-        element.spinner.value = value.innerHTML;
+        element.spinner.value = spinnerValue.innerHTML;
         (changed) && element.dispatchEvent(this.change);
     }
     /**
@@ -111,8 +111,8 @@ class Spinner {
         const properties = this.getProperties(element);
         element.spinner = { ...this._defaults, ...properties };
         element.spinner.default = (_a = properties.value) !== null && _a !== void 0 ? _a : this._defaults.value;
-        const value = element.querySelector("." + this.value);
-        value.innerHTML = element.spinner.value;
+        const spinnerValue = element.querySelector("." + this.value);
+        spinnerValue.innerHTML = element.spinner.value;
     }
     /**
      * Returns the properties for the specified element.
@@ -141,16 +141,14 @@ class Spinner {
      */
     static accelerate(element, action, step) {
         this.checkProperties(element);
-        const origin = element.spinner.step;
-        let button;
-        if (action === "subtraction")
-            button = element.querySelector("." + this.subtraction);
-        if (action === "addition")
-            button = element.querySelector("." + this.addition);
-        if (button) {
+        const spinnerStep = element.spinner.step;
+        const spinnerButton = (action === "addition")
+            ? element.querySelector("." + this.addition)
+            : element.querySelector("." + this.subtraction);
+        if (spinnerButton) {
             element.spinner.step = step;
-            button.dispatchEvent(this.click);
-            element.spinner.step = origin;
+            spinnerButton.dispatchEvent(this.click);
+            element.spinner.step = spinnerStep;
         }
     }
     /**
@@ -160,11 +158,11 @@ class Spinner {
      */
     static reset(element) {
         this.checkProperties(element);
-        const value = element.querySelector("." + this.value);
-        if (value.innerHTML === element.spinner.default)
+        const spinnerValue = element.querySelector("." + this.value);
+        if (!spinnerValue || spinnerValue.innerHTML === element.spinner.default)
             return;
-        value.innerHTML = element.spinner.default;
-        element.spinner.value = value.innerHTML;
+        spinnerValue.innerHTML = element.spinner.default;
+        element.spinner.value = spinnerValue.innerHTML;
         element.dispatchEvent(this.change);
     }
     /**

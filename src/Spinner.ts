@@ -3,12 +3,39 @@ export interface SpinnerElement extends HTMLDivElement {
 }
 
 export interface SpinnerDefaults {
+    /**
+     * Minimum possible value (inclusive).
+     */
     min: number;
+
+    /**
+     * Maximum possible value (inclusive).
+     */
     max: number;
+
+    /**
+     * Step of increasing/decreasing the value.
+     */
     step: number;
+
+    /**
+     * The number of digits after the dot.
+     */
     fraction: number;
+
+    /**
+     * The initial value.
+     */
     value: string;
+
+    /**
+     * The default value.
+     */
     default: string;
+
+    /**
+     * RegExp to determine the value to be increased/decreased.
+     */
     pattern: string;
 }
 
@@ -115,17 +142,17 @@ export class Spinner {
      * @private
      */
     private static handler(event: Event): void {
-        const target = event.target as Element;
+        const target = event.target as HTMLElement;
         if (!this.isSpinner(target)) return;
 
         const element = target.closest(".spinner") as SpinnerElement;
         this.checkProperties(element);
 
-        const value = element.querySelector("." + this.value) as Element;
+        const spinnerValue = element.querySelector("." + this.value) as HTMLElement;
         const regexp = new RegExp(element.spinner.pattern, "g");
         let changed = false;
 
-        value.innerHTML = value.innerHTML.replace(regexp, (source: string, match: string) => {
+        spinnerValue.innerHTML = spinnerValue.innerHTML.replace(regexp, (source: string, match: string) => {
             const {
                 min,
                 max,
@@ -146,7 +173,7 @@ export class Spinner {
             return source;
         });
 
-        element.spinner.value = value.innerHTML;
+        element.spinner.value = spinnerValue.innerHTML;
         (changed) && element.dispatchEvent(this.change);
     }
 
@@ -156,7 +183,7 @@ export class Spinner {
      * @param element
      * @private
      */
-    private static isSpinner(element: Element): boolean {
+    private static isSpinner(element: HTMLElement): boolean {
         return (element.classList.contains(this.subtraction) || element.classList.contains(this.addition));
     }
 
@@ -166,7 +193,7 @@ export class Spinner {
      * @param element
      * @private
      */
-    private static isAddition(element: Element): boolean {
+    private static isAddition(element: HTMLElement): boolean {
         return element.classList.contains(this.addition);
     }
 
@@ -176,7 +203,7 @@ export class Spinner {
      * @param element
      * @private
      */
-    private static isSubtraction(element: Element): boolean {
+    private static isSubtraction(element: HTMLElement): boolean {
         return element.classList.contains(this.subtraction);
     }
 
@@ -202,8 +229,8 @@ export class Spinner {
         element.spinner = {...this._defaults, ...properties};
         element.spinner.default = properties.value ?? this._defaults.value;
 
-        const value = element.querySelector("." + this.value) as Element;
-        value.innerHTML = element.spinner.value;
+        const spinnerValue = element.querySelector("." + this.value) as HTMLElement;
+        spinnerValue.innerHTML = element.spinner.value;
     }
 
     /**
@@ -235,16 +262,15 @@ export class Spinner {
     public static accelerate(element: SpinnerElement, action: SpinnerAction, step: number): void {
         this.checkProperties(element);
 
-        const origin = element.spinner.step;
-        let button;
+        const spinnerStep = element.spinner.step;
+        const spinnerButton = (action === "addition")
+            ? element.querySelector("." + this.addition) as HTMLElement | null
+            : element.querySelector("." + this.subtraction) as HTMLElement | null;
 
-        if (action === "subtraction") button = element.querySelector("." + this.subtraction);
-        if (action === "addition") button = element.querySelector("." + this.addition);
-
-        if (button) {
+        if (spinnerButton) {
             element.spinner.step = step;
-            button.dispatchEvent(this.click);
-            element.spinner.step = origin;
+            spinnerButton.dispatchEvent(this.click);
+            element.spinner.step = spinnerStep;
         }
     }
 
@@ -256,11 +282,11 @@ export class Spinner {
     public static reset(element: SpinnerElement): void {
         this.checkProperties(element);
 
-        const value = element.querySelector("." + this.value)!;
-        if (value.innerHTML === element.spinner.default) return;
+        const spinnerValue = element.querySelector("." + this.value) as HTMLElement | null;
+        if (!spinnerValue || spinnerValue.innerHTML === element.spinner.default) return;
 
-        value.innerHTML = element.spinner.default;
-        element.spinner.value = value.innerHTML;
+        spinnerValue.innerHTML = element.spinner.default;
+        element.spinner.value = spinnerValue.innerHTML;
 
         element.dispatchEvent(this.change);
     }

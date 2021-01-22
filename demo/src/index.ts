@@ -8,20 +8,20 @@ Spinner.defaults = {
 
 /* Test: 1. */
 document.body.addEventListener("click", (event: Event) => {
-    const element = event.target as Element;
+    const target = event.target as HTMLElement;
 
-    if (element.classList.contains("subtraction") || element.classList.contains("addition")) {
+    if (target.classList.contains("subtraction") || target.classList.contains("addition")) {
         const spinnerElement = document.querySelector(".test-1 .spinner") as SpinnerElement;
-        const step = Number(element.getAttribute("data-value"));
-        const action: SpinnerAction = (element.classList.contains("addition")) ? "addition" : "subtraction";
+        const step = Number(target.getAttribute("data-value"));
+        const action: SpinnerAction = (target.classList.contains("addition")) ? "addition" : "subtraction";
 
         Spinner.accelerate(spinnerElement, action, step);
         console.log(Spinner.getValue(spinnerElement));
     }
 
-    if (element.classList.contains("set")) {
+    if (target.classList.contains("set")) {
         const spinnerElement = document.querySelector(".test-1 .spinner") as SpinnerElement;
-        const value = element.getAttribute("data-value") ?? spinnerElement.spinner.default;
+        const value = target.getAttribute("data-value") ?? spinnerElement.spinner.default;
 
         Spinner.setValue(spinnerElement, value);
         console.log(Spinner.getValue(spinnerElement));
@@ -30,12 +30,12 @@ document.body.addEventListener("click", (event: Event) => {
 
 
 /* Reset. */
-const reset = document.querySelector(".reset")!;
+const reset = document.querySelector(".reset") as HTMLElement;
 
 reset.addEventListener("click", () => {
-    const spinners = Array.prototype.slice.call(document.querySelectorAll(".content .spinner")) as SpinnerElement[];
+    const elements = Array.prototype.slice.call(document.querySelectorAll(".content .spinner")) as SpinnerElement[];
 
-    for (const spinner of spinners) {
+    for (const spinner of elements) {
         Spinner.reset(spinner);
     }
 });

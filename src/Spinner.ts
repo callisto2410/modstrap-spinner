@@ -22,7 +22,8 @@ export type SpinnerAction = "addition" | "subtraction";
  * @see bind
  * @see accelerate
  * @see reset
- * @see valueOf
+ * @see getValue
+ * @see setValue
  */
 export class Spinner {
     /**
@@ -269,10 +270,26 @@ export class Spinner {
      *
      * @param element
      */
-    public static valueOf(element: SpinnerElement): string {
+    public static getValue(element: SpinnerElement): string {
         this.checkProperties(element);
 
         return element.spinner.value;
+    }
+
+    /**
+     * Sets the specified value to the specified spinner.
+     *
+     * @param element
+     * @param value
+     */
+    public static setValue(element: SpinnerElement, value: string): void {
+        this.checkProperties(element);
+
+        const spinnerValue = element.querySelector("." + this.value) as HTMLElement | null;
+        if (!spinnerValue) return;
+
+        spinnerValue.innerHTML = value;
+        element.spinner.value = value;
     }
 }
 

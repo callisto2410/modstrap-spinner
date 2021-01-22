@@ -7,7 +7,8 @@ exports.Spinner = void 0;
  * @see bind
  * @see accelerate
  * @see reset
- * @see valueOf
+ * @see getValue
+ * @see setValue
  */
 class Spinner {
     /**
@@ -171,9 +172,23 @@ class Spinner {
      *
      * @param element
      */
-    static valueOf(element) {
+    static getValue(element) {
         this.checkProperties(element);
         return element.spinner.value;
+    }
+    /**
+     * Sets the specified value to the specified spinner.
+     *
+     * @param element
+     * @param value
+     */
+    static setValue(element, value) {
+        this.checkProperties(element);
+        const spinnerValue = element.querySelector("." + this.value);
+        if (!spinnerValue)
+            return;
+        spinnerValue.innerHTML = value;
+        element.spinner.value = value;
     }
 }
 exports.Spinner = Spinner;

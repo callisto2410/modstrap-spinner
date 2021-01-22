@@ -9,13 +9,23 @@ Spinner.defaults = {
 /* Test: 1. */
 document.body.addEventListener("click", (event: Event) => {
     const element = event.target as Element;
-    if (!element.classList.contains("subtraction") && !element.classList.contains("addition")) return;
 
-    const spinner = document.querySelector(".test-1 .spinner") as SpinnerElement;
-    const step = Number(element.getAttribute("data-value"));
-    const action: SpinnerAction = (element.classList.contains("addition")) ? "addition": "subtraction";
+    if (element.classList.contains("subtraction") || element.classList.contains("addition")) {
+        const spinnerElement = document.querySelector(".test-1 .spinner") as SpinnerElement;
+        const step = Number(element.getAttribute("data-value"));
+        const action: SpinnerAction = (element.classList.contains("addition")) ? "addition" : "subtraction";
 
-    Spinner.accelerate(spinner, action, step);
+        Spinner.accelerate(spinnerElement, action, step);
+        console.log(Spinner.getValue(spinnerElement));
+    }
+
+    if (element.classList.contains("set")) {
+        const spinnerElement = document.querySelector(".test-1 .spinner") as SpinnerElement;
+        const value = element.getAttribute("data-value") ?? spinnerElement.spinner.default;
+
+        Spinner.setValue(spinnerElement, value);
+        console.log(Spinner.getValue(spinnerElement));
+    }
 });
 
 

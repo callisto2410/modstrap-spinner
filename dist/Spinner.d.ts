@@ -18,7 +18,8 @@ export declare type SpinnerAction = "addition" | "subtraction";
  * @see bind
  * @see accelerate
  * @see reset
- * @see valueOf
+ * @see getValue
+ * @see setValue
  */
 export declare class Spinner {
     /**
@@ -142,6 +143,13 @@ export declare class Spinner {
      *
      * @param element
      */
-    static valueOf(element: SpinnerElement): string;
+    static getValue(element: SpinnerElement): string;
+    /**
+     * Sets the specified value to the specified spinner.
+     *
+     * @param element
+     * @param value
+     */
+    static setValue(element: SpinnerElement, value: string): void;
 }
 export default Spinner;

@@ -70,6 +70,11 @@ article {
     &:hover {
       background: #0081cb;
     }
+
+    &.set {
+      width: 49%;
+      margin: 10px 0 0;
+    }
   }
 
   @media (max-width: 768px) {

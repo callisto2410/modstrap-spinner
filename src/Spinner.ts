@@ -208,7 +208,8 @@ export class Spinner {
     }
 
     /**
-     * Checks the existence of spinner properties.
+     * Checks whether the element has spinner properties.
+     * If necessary, sets the properties of the spinner.
      *
      * @param element
      * @private

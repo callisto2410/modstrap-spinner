@@ -4,7 +4,7 @@ exports.Spinner = void 0;
 /**
  * Spinner widget with support for custom value patterns.
  *
- * @see bind
+ * @see setListener
  * @see accelerate
  * @see reset
  * @see getValue
@@ -26,7 +26,7 @@ class Spinner {
      *  Setting up.
      *  Called by default when importing a module, no manual call required.
      */
-    static bind() {
+    static setListener() {
         if (!this.listenerExists) {
             document.body.addEventListener("click", this.handler.bind(this));
             this.listenerExists = true;
@@ -243,5 +243,5 @@ Spinner._defaults = {
     default: "1",
     pattern: "([-\\d.]+)",
 };
-Spinner.bind();
+Spinner.setListener();
 exports.default = Spinner;

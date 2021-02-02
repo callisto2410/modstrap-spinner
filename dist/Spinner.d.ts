@@ -37,7 +37,7 @@ export declare type SpinnerAction = "addition" | "subtraction";
 /**
  * Spinner widget with support for custom value patterns.
  *
- * @see bind
+ * @see setListener
  * @see accelerate
  * @see reset
  * @see getValue
@@ -96,7 +96,7 @@ export declare class Spinner {
      *  Setting up.
      *  Called by default when importing a module, no manual call required.
      */
-    static bind(): void;
+    static setListener(): void;
     /**
      * Event handling.
      *

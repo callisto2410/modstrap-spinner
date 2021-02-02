@@ -31,7 +31,8 @@ export interface SpinnerDefaults {
      */
     pattern: string;
 }
-export declare type SpinnerProperties = Partial<SpinnerDefaults>;
+export interface SpinnerProperties extends Partial<SpinnerDefaults> {
+}
 export declare type SpinnerAction = "addition" | "subtraction";
 /**
  * Spinner widget with support for custom value patterns.

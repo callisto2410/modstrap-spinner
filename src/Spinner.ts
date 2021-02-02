@@ -39,7 +39,8 @@ export interface SpinnerDefaults {
     pattern: string;
 }
 
-export type SpinnerProperties = Partial<SpinnerDefaults>;
+export interface SpinnerProperties extends Partial<SpinnerDefaults> {
+}
 
 export type SpinnerAction = "addition" | "subtraction";
 

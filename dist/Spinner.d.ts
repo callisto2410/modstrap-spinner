@@ -42,6 +42,9 @@ export declare type SpinnerAction = "addition" | "subtraction";
  * @see reset
  * @see getValue
  * @see setValue
+ *
+ * Spinner:
+ * [Github]{@link https://github.com/callisto2410/modstrap-spinner}
  */
 export declare class Spinner {
     /**

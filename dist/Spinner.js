@@ -9,6 +9,9 @@ exports.Spinner = void 0;
  * @see reset
  * @see getValue
  * @see setValue
+ *
+ * Spinner:
+ * [Github]{@link https://github.com/callisto2410/modstrap-spinner}
  */
 class Spinner {
     /**

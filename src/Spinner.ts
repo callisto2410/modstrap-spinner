@@ -62,21 +62,21 @@ export class Spinner {
      *
      * @private
      */
-    private static readonly value: string = "spinner-value";
+    private static readonly value = "spinner-value";
 
     /**
      * CSS selector for subtract button.
      *
      * @private
      */
-    private static readonly subtraction: string = "spinner-subtraction";
+    private static readonly subtraction = "spinner-subtraction";
 
     /**
      * CSS selector for addition button.
      *
      * @private
      */
-    private static readonly addition: string = "spinner-addition";
+    private static readonly addition = "spinner-addition";
 
     /**
      * Value change event.

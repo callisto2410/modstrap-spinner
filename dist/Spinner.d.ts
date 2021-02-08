@@ -52,19 +52,19 @@ export declare class Spinner {
      *
      * @private
      */
-    private static value;
+    private static readonly value;
     /**
      * CSS selector for subtract button.
      *
      * @private
      */
-    private static subtraction;
+    private static readonly subtraction;
     /**
      * CSS selector for addition button.
      *
      * @private
      */
-    private static addition;
+    private static readonly addition;
     /**
      * Value change event.
      *

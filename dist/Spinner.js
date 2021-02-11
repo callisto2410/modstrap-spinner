@@ -64,7 +64,7 @@ class Spinner {
             return source;
         });
         element.spinner.value = spinnerValue.innerHTML;
-        (changed) && element.dispatchEvent(this.change);
+        changed && element.dispatchEvent(this.change);
     }
     /**
      * Returns true if the specified element is a spinner, otherwise returns false.

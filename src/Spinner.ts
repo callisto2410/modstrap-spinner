@@ -132,7 +132,7 @@ export class Spinner {
      *  Setting up.
      *  Called by default when importing a module, no manual call required.
      */
-    public static setListener() {
+    public static setListener(): void {
         if (!this.listenerExists) {
             document.body.addEventListener("click", this.handler.bind(this));
             this.listenerExists = true;
@@ -178,7 +178,7 @@ export class Spinner {
         });
 
         element.spinner.value = spinnerValue.innerHTML;
-        (changed) && element.dispatchEvent(this.change);
+        changed && element.dispatchEvent(this.change);
     }
 
     /**

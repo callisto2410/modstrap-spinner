@@ -16,11 +16,12 @@
     "url": "git+https://github.com/callisto2410/modstrap-spinner.git"
   },
   "scripts": {
-    "build": "tsc --project tsconfig.json && sass --no-source-map src/Spinner.scss dist/Spinner.css",
+    "build": "npx tsc --project tsconfig.json && npx sass --no-source-map src/Spinner.scss dist/Spinner.css",
     "build:all": "npm run build:clean && npm run build && npm run build:demo",
-    "build:demo": "webpack --config webpack.config.js",
-    "build:demo:watch": "webpack --watch --config webpack.config.js",
-    "build:clean": "rimraf .cache dist demo/dist *.tgz",
+    "build:demo": "npx webpack --config webpack.config.js",
+    "build:demo:watch": "npx webpack --watch --config webpack.config.js",
+    "build:demo:server": "npx live-server ./demo",
+    "build:clean": "npx rimraf .cache dist demo/dist *.tgz",
     "build:pack": "npm run build:clean && npm run build && npm pack"
   },
   "devDependencies": {
@@ -28,6 +29,7 @@
     "autoprefixer": "^10.2.1",
     "css-loader": "^5.0.1",
     "cssnano": "^4.1.10",
+    "live-server": "^1.2.1",
     "postcss-loader": "^4.0.1",
     "rimraf": "^3.0.2",
     "sass": "^1.32.4",
@@ -37,6 +39,5 @@
     "typescript": "^4.0.2",
     "webpack": "^5.14.0",
     "webpack-cli": "^4.3.1"
-  },
-  "dependencies": {}
+  }
 }

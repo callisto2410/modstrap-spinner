@@ -1,7 +1,7 @@
 const Path = require("path");
 const TerserPlugin = require("terser-webpack-plugin");
 
-const Webpack = {
+const WPack = {
     mode: "production",
     devtool: "source-map",
     performance: {
@@ -18,7 +18,7 @@ const Webpack = {
     },
 };
 
-Webpack.optimization = {
+WPack.optimization = {
     minimize: true,
     minimizer: [
         new TerserPlugin({
@@ -42,7 +42,7 @@ Webpack.optimization = {
     },
 };
 
-Webpack.module = {
+WPack.module = {
     rules: [
         {
             test: /\.scss$/,
@@ -83,8 +83,8 @@ Webpack.module = {
     ],
 };
 
-Webpack.resolve = {
+WPack.resolve = {
     extensions: [".ts", ".js"],
 };
 
-module.exports = Webpack;
+module.exports = WPack;
